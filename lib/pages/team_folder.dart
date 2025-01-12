@@ -18,11 +18,13 @@ class _TeamFolderPageState extends State<TeamFolderPage> {
             padding: EdgeInsets.symmetric(vertical: 25, horizontal: 25),
             alignment: Alignment.bottomCenter,
             height: 170,
-            decoration: BoxDecoration(color: Colors.blue.shade800),
+            decoration: BoxDecoration(color: Colors.blue.shade700),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Column(
                   mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       "Shashwat",
@@ -32,7 +34,7 @@ class _TeamFolderPageState extends State<TeamFolderPage> {
                           color: Colors.white),
                     ),
                     Text(
-                      "Team Folder",
+                      "Home Folder",
                       style: TextStyle(fontSize: 17, color: Colors.white),
                     )
                   ],
@@ -42,7 +44,7 @@ class _TeamFolderPageState extends State<TeamFolderPage> {
                     Container(
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
-                          color: Colors.black.withOpacity(0.1)),
+                          color: Colors.black.withOpacity(0.3)),
                       child: IconButton(
                         icon: Icon(
                           Icons.search,
@@ -56,7 +58,7 @@ class _TeamFolderPageState extends State<TeamFolderPage> {
                     Container(
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
-                          color: Colors.black.withOpacity(0.1)),
+                          color: Colors.black.withOpacity(0.3)),
                       child: IconButton(
                         icon: Icon(
                           Icons.notifications_none,
