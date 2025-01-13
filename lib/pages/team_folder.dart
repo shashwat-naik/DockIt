@@ -8,8 +8,10 @@ class TeamFolderPage extends StatefulWidget {
 }
 
 class _TeamFolderPageState extends State<TeamFolderPage> {
+  double availableScreenWidth = 0;
   @override
   Widget build(BuildContext context) {
+    availableScreenWidth = MediaQuery.of(context).size.width - 50;
     return Scaffold(
       backgroundColor: Colors.grey[100],
       body: Column(
@@ -72,9 +74,83 @@ class _TeamFolderPageState extends State<TeamFolderPage> {
                 )
               ],
             ),
-          )
+          ),
+          SizedBox(
+            height: 25,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 28),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                RichText(
+                    text: const TextSpan(
+                        text: "Storage ",
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold),
+                        children: [
+                      TextSpan(
+                        text: " 9.1/10GB",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.w300,
+                          fontSize: 16,
+                        ),
+                      )
+                    ])),
+                const Text(
+                  "Upgrade",
+                  style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.blue),
+                )
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 25,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 25.0),
+            child: Row(
+              children: [
+                buildFileSizeChart("SOURCES", Colors.blue, .3),
+                SizedBox(width: 2,),
+                buildFileSizeChart("DOCS", Colors.red, .25),
+                SizedBox(width: 2,),
+                buildFileSizeChart("IMAGES", Colors.yellow, .20),
+                SizedBox(width: 2,),
+                buildFileSizeChart("FREE", Colors.grey, .23),
+              ],
+            ),
+          ),
+          SizedBox(height: 15,),
+          const Divider(height: 20,),
         ],
       ),
+    );
+  }
+
+  Column buildFileSizeChart(String title, Color color, double widthPercentage) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          width: availableScreenWidth * widthPercentage,
+          height: 4,
+          color: color,
+        ),
+        SizedBox(
+          height: 8,
+        ),
+        Text(
+          title,
+          style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
+        )
+      ],
     );
   }
 }
