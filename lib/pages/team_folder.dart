@@ -118,19 +118,96 @@ class _TeamFolderPageState extends State<TeamFolderPage> {
             child: Row(
               children: [
                 buildFileSizeChart("SOURCES", Colors.blue, .3),
-                SizedBox(width: 2,),
+                SizedBox(
+                  width: 2,
+                ),
                 buildFileSizeChart("DOCS", Colors.red, .25),
-                SizedBox(width: 2,),
+                SizedBox(
+                  width: 2,
+                ),
                 buildFileSizeChart("IMAGES", Colors.yellow, .20),
-                SizedBox(width: 2,),
+                SizedBox(
+                  width: 2,
+                ),
                 buildFileSizeChart("FREE", Colors.grey, .23),
               ],
             ),
           ),
-          SizedBox(height: 15,),
-          const Divider(height: 20,),
+          SizedBox(
+            height: 15,
+          ),
+          Divider(
+            height: 30,
+          ),
+          Expanded(
+            child: ListView(
+              padding: EdgeInsets.all(25),
+              children: [
+                Text(
+                  "Recently updated",
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Row(
+                  children: [
+                    buildFileColumn('prd', 'Desktop', ' ./sketch'),
+                    SizedBox(
+                      width: availableScreenWidth * .03,
+                    ),
+                    buildFileColumn('sketch', 'Mobile', ' ./prd'),
+                    SizedBox(
+                      width: availableScreenWidth * .03,
+                    ),
+                    buildFileColumn('prd', 'Interaction', ' ./sketch'),
+                  ],
+                ),
+                Divider(
+                  height: 60,
+                ),
+              ],
+            ),
+          )
         ],
       ),
+    );
+  }
+
+  Column buildFileColumn(String image, String filename, String extention) {
+    return Column(
+      children: [
+        Container(
+          width: availableScreenWidth * .31,
+          decoration: BoxDecoration(
+              color: Colors.grey.shade200,
+              borderRadius: BorderRadius.circular(20)),
+          padding: EdgeInsets.all(38),
+          height: 110,
+          child: Image.asset('assets/images/$image.png'),
+        ),
+        SizedBox(
+          height: 15,
+        ),
+        RichText(
+          text: TextSpan(
+              text: filename,
+              style: const TextStyle(
+                color: Colors.black,
+                fontSize: 14,
+              ),
+              children: [
+                TextSpan(
+                  text: extention,
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontWeight: FontWeight.w300,
+                    fontSize: 13,
+                  ),
+                ),
+              ]),
+        ),
+      ],
     );
   }
 
