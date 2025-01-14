@@ -9,6 +9,8 @@ class TeamFolderPage extends StatefulWidget {
 
 class _TeamFolderPageState extends State<TeamFolderPage> {
   double availableScreenWidth = 0;
+  int selectedIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     availableScreenWidth = MediaQuery.of(context).size.width - 50;
@@ -187,7 +189,7 @@ class _TeamFolderPageState extends State<TeamFolderPage> {
                   height: 20,
                 ),
                 buildProjectRow('Chatbox'),
-                buildProjectRow('Time Table'),
+                buildProjectRow('TimeTable'),
                 buildProjectRow('Personal'),
                 buildProjectRow('Fitness'),
               ],
@@ -195,6 +197,35 @@ class _TeamFolderPageState extends State<TeamFolderPage> {
           )
         ],
       ),
+      floatingActionButton: Container(
+        decoration: BoxDecoration(shape: BoxShape.circle, boxShadow: [BoxShadow(color: Colors.white, spreadRadius: 7, blurRadius: 1)]),
+        child: FloatingActionButton(
+          onPressed: () {},
+          backgroundColor: const Color.fromARGB(255, 59, 105, 144),
+          shape: CircleBorder(),
+          child: Icon(Icons.add, color: Colors.white,),
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: BottomNavigationBar(
+          onTap: (index) {
+            setState(() {
+              selectedIndex = selectedIndex;
+            });
+          },
+          currentIndex: selectedIndex,
+          showSelectedLabels: false,
+          showUnselectedLabels: false,
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.access_time),
+              label: 'Time',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.add_box),
+              label: 'Folder',
+            ),
+          ]),
     );
   }
 
