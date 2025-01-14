@@ -92,7 +92,7 @@ class _TeamFolderPageState extends State<TeamFolderPage> {
                             fontWeight: FontWeight.bold),
                         children: [
                       TextSpan(
-                        text: " 9.1/10GB",
+                        text: " 9.1/10 GB",
                         style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.w300,
@@ -166,9 +166,71 @@ class _TeamFolderPageState extends State<TeamFolderPage> {
                 Divider(
                   height: 60,
                 ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Projects",
+                      style: TextStyle(
+                          color: Colors.black, fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      "Create new",
+                      style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.blue),
+                    )
+                  ],
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                buildProjectRow('Chatbox'),
+                buildProjectRow('Time Table'),
+                buildProjectRow('Personal'),
+                buildProjectRow('Fitness'),
               ],
             ),
           )
+        ],
+      ),
+    );
+  }
+
+  Container buildProjectRow(String folderName) {
+    return Container(
+      margin: EdgeInsets.only(bottom: 8),
+      padding: EdgeInsets.symmetric(horizontal: 20),
+      height: 65,
+      decoration: BoxDecoration(
+          color: Colors.grey.shade200, borderRadius: BorderRadius.circular(15)),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Row(
+            children: [
+              Icon(
+                Icons.folder,
+                color: Colors.blue[200],
+              ),
+              SizedBox(
+                width: 12,
+              ),
+              Text(
+                folderName,
+                style: TextStyle(
+                  fontSize: 16,
+                ),
+              )
+            ],
+          ),
+          IconButton(
+              onPressed: () {},
+              icon: Icon(
+                Icons.more_vert_rounded,
+                color: Colors.grey,
+              ))
         ],
       ),
     );
