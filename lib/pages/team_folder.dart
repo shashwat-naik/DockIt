@@ -189,7 +189,7 @@ class _TeamFolderPageState extends State<TeamFolderPage> {
                 SizedBox(
                   height: 20,
                 ),
-                buildProjectRow('Chatbox'),
+                buildProjectRow('Secret'),
                 buildProjectRow('TimeTable'),
                 buildProjectRow('Personal'),
                 buildProjectRow('Fitness'),
