@@ -1,3 +1,4 @@
+import 'package:dockit/pages/project.dart';
 import 'package:flutter/material.dart';
 
 class TeamFolderPage extends StatefulWidget {
@@ -198,12 +199,17 @@ class _TeamFolderPageState extends State<TeamFolderPage> {
         ],
       ),
       floatingActionButton: Container(
-        decoration: BoxDecoration(shape: BoxShape.circle, boxShadow: [BoxShadow(color: Colors.white, spreadRadius: 7, blurRadius: 1)]),
+        decoration: BoxDecoration(shape: BoxShape.circle, boxShadow: [
+          BoxShadow(color: Colors.white, spreadRadius: 7, blurRadius: 1)
+        ]),
         child: FloatingActionButton(
           onPressed: () {},
           backgroundColor: const Color.fromARGB(255, 59, 105, 144),
           shape: CircleBorder(),
-          child: Icon(Icons.add, color: Colors.white,),
+          child: Icon(
+            Icons.add,
+            color: Colors.white,
+          ),
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -229,40 +235,49 @@ class _TeamFolderPageState extends State<TeamFolderPage> {
     );
   }
 
-  Container buildProjectRow(String folderName) {
-    return Container(
-      margin: EdgeInsets.only(bottom: 8),
-      padding: EdgeInsets.symmetric(horizontal: 20),
-      height: 65,
-      decoration: BoxDecoration(
-          color: Colors.grey.shade200, borderRadius: BorderRadius.circular(15)),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Row(
-            children: [
-              Icon(
-                Icons.folder,
-                color: Colors.blue[200],
-              ),
-              SizedBox(
-                width: 12,
-              ),
-              Text(
-                folderName,
-                style: TextStyle(
-                  fontSize: 16,
+  Widget buildProjectRow(String folderName) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context).push(MaterialPageRoute<void>(
+          builder: (BuildContext context) =>
+              ProjectPage(folderName: folderName),
+        ));
+      },
+      child: Container(
+        margin: EdgeInsets.only(bottom: 8),
+        padding: EdgeInsets.symmetric(horizontal: 20),
+        height: 65,
+        decoration: BoxDecoration(
+            color: Colors.grey.shade200,
+            borderRadius: BorderRadius.circular(15)),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              children: [
+                Icon(
+                  Icons.folder,
+                  color: Colors.blue[200],
                 ),
-              )
-            ],
-          ),
-          IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.more_vert_rounded,
-                color: Colors.grey,
-              ))
-        ],
+                SizedBox(
+                  width: 12,
+                ),
+                Text(
+                  folderName,
+                  style: TextStyle(
+                    fontSize: 16,
+                  ),
+                )
+              ],
+            ),
+            IconButton(
+                onPressed: () {},
+                icon: Icon(
+                  Icons.more_vert_rounded,
+                  color: Colors.grey,
+                ))
+          ],
+        ),
       ),
     );
   }
